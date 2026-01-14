@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "paris",
+      "description": "The Eiffel Tower in Paris, France, at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxlaWZmZWwlMjB0b3dlcnxlbnwwfHx8fDE3NjgzNDMwMTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "eiffel tower"
+    },
+    {
+      "id": "tokyo",
+      "description": "The bustling Shibuya Crossing in Tokyo, Japan, at night.",
+      "imageUrl": "https://images.unsplash.com/photo-1525935944571-4e99237764c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMG5pZ2h0fGVufDB8fHx8MTc2ODI1MzgyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city night"
+    },
+    {
+      "id": "new york",
+      "description": "The iconic skyline of New York City with skyscrapers.",
+      "imageUrl": "https://images.unsplash.com/photo-1575380591643-b2c92368dc6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwc2t5bGluZXxlbnwwfHx8fDE3NjgzMDAyOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city skyline"
+    },
+    {
+      "id": "rome",
+      "description": "The ancient Colosseum in Rome, Italy.",
+      "imageUrl": "https://images.unsplash.com/photo-1717518215550-df082a0924e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhbmNpZW50JTIwcnVpbnN8ZW58MHx8fHwxNzY4MzQwMzAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ancient ruins"
+    },
+    {
+      "id": "sydney",
+      "description": "The Sydney Opera House in Australia.",
+      "imageUrl": "https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvcGVyYSUyMGhvdXNlfGVufDB8fHx8MTc2ODI4NDcyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "opera house"
+    },
+    {
+      "id": "default",
+      "description": "A beautiful and serene travel destination.",
+      "imageUrl": "https://images.unsplash.com/photo-1672774018781-2b6c40a1223f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0cmF2ZWwlMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzY4Mjg1OTQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "travel landscape"
+    }
+  ]
 }
