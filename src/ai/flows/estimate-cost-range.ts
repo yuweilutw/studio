@@ -30,7 +30,7 @@ const prompt = ai.definePrompt({
   name: 'estimateCostRangePrompt',
   input: {schema: EstimateCostRangeInputSchema},
   output: {schema: EstimateCostRangeOutputSchema},
-  prompt: `You are a travel expert. Estimate the cost range for a trip to {{destination}} lasting {{duration}} days. Consider accommodation, food, transportation, and activities.  Provide the cost range in USD. Be brief and to the point.
+  prompt: `You are a travel expert. Estimate the cost range for a trip to {{destination}} lasting {{duration}} days. Consider accommodation, food, transportation, and activities. Provide the cost range in TWD. Be brief and to the point. Respond in Traditional Chinese.
 `,
 });
 

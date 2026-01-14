@@ -31,7 +31,7 @@ const prompt = ai.definePrompt({
   name: 'offerTransportationTipsPrompt',
   input: {schema: OfferTransportationTipsInputSchema},
   output: {schema: OfferTransportationTipsOutputSchema},
-  prompt: `You are an expert travel advisor. A user is planning a trip to {{destination}} for {{duration}} days. They have the following preferences: {{travelPreferences}}. Offer insights into local transportation options, including cost-effective and convenient choices. Consider factors like safety, accessibility, and local customs related to transportation. Provide practical advice and tips to help them navigate transportation in {{destination}} efficiently. Return the information in the format of transportationTips, taking into consideration the travel duration and travel preferences.
+  prompt: `You are an expert travel advisor. A user is planning a trip to {{destination}} for {{duration}} days. They have the following preferences: {{travelPreferences}}. Offer insights into local transportation options, including cost-effective and convenient choices. Consider factors like safety, accessibility, and local customs related to transportation. Provide practical advice and tips to help them navigate transportation in {{destination}} efficiently. Return the information in the format of transportationTips, taking into consideration the travel duration and travel preferences. Respond in Traditional Chinese.
 `,
 });
 

@@ -35,7 +35,7 @@ const prompt = ai.definePrompt({
   name: 'generatePersonalizedTravelChecklistPrompt',
   input: {schema: GeneratePersonalizedTravelChecklistInputSchema},
   output: {schema: GeneratePersonalizedTravelChecklistOutputSchema},
-  prompt: `You are a travel expert who creates personalized travel checklists. Based on the user's inputs below, create a checklist of items they should pack for their trip. Consider the location, duration, travel theme, age range, and preferences to create a comprehensive and helpful checklist.
+  prompt: `You are a travel expert who creates personalized travel checklists. Based on the user's inputs below, create a checklist of items they should pack for their trip. Consider the location, duration, travel theme, age range, and preferences to create a comprehensive and helpful checklist. Respond in Traditional Chinese.
 
 Location: {{{location}}}
 Duration: {{{duration}}} days

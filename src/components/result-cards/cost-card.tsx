@@ -11,7 +11,7 @@ export function CostCard({ range }: CostCardProps) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-headline text-xl">
           <Wallet className="w-6 h-6 text-primary" />
-          大致花費
+          大致花費 (TWD)
         </CardTitle>
       </CardHeader>
       <CardContent>

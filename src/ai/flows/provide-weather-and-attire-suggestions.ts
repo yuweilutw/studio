@@ -33,7 +33,7 @@ const prompt = ai.definePrompt({
   name: 'weatherAndAttirePrompt',
   input: {schema: WeatherAndAttireInputSchema},
   output: {schema: WeatherAndAttireOutputSchema},
-  prompt: `You are a travel expert. Provide a concise weather forecast and clothing suggestions for a trip to {{{travelDestination}}} from {{{startDate}}} to {{{endDate}}}. The trip is {{{travelDays}}} days long.\n\nWeather Forecast:\nClothing Suggestions: `,
+  prompt: `You are a travel expert. Provide a concise weather forecast and clothing suggestions for a trip to {{{travelDestination}}} from {{{startDate}}} to {{{endDate}}}. The trip is {{{travelDays}}} days long. Respond in Traditional Chinese.\n\nWeather Forecast:\nClothing Suggestions: `,
 });
 
 const provideWeatherAndAttireSuggestionsFlow = ai.defineFlow(
