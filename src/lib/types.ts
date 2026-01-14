@@ -2,7 +2,20 @@ import { z } from "zod";
 
 export const formSchema = z.object({
   location: z.string().min(2, { message: "請輸入至少 2 個字元" }),
-  duration: z.number().min(1).max(30),
+  dateRange: z.object({
+    from: z.date({
+      required_error: "請選擇開始日期",
+    }),
+    to: z.date({
+      required_error: "請選擇結束日期",
+    }),
+  }, {
+    required_error: "請選擇日期區間",
+    invalid_type_error: "請選擇日期區間",
+  }).refine((data) => data.to >= data.from, {
+    message: "結束日期不能早於開始日期",
+    path: ["to"],
+  }),
   travelTheme: z.enum(["adventure", "relaxation", "cultural", "party"], {
     errorMap: () => ({ message: "請選擇一個旅遊情境" }),
   }),

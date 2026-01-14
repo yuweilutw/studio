@@ -18,6 +18,7 @@ import {
 } from "@/ai/flows/estimate-cost-range";
 import type { FormSchema, TravelSuggestions } from "@/lib/types";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { differenceInDays } from 'date-fns';
 
 const findImage = (location: string) => {
   const defaultImage = PlaceHolderImages.find(img => img.id === 'default') || PlaceHolderImages[0];
@@ -33,7 +34,10 @@ export async function getTravelSuggestions(
   data: FormSchema
 ): Promise<TravelSuggestions | { error: string }> {
   try {
-    const { location, duration, travelTheme, ageRange, preferences } = data;
+    const { location, dateRange, travelTheme, ageRange, preferences } = data;
+    
+    // Calculate duration in days. Add 1 to include both start and end dates.
+    const duration = differenceInDays(dateRange.to, dateRange.from) + 1;
 
     const checklistInput: GeneratePersonalizedTravelChecklistInput = {
       location,
@@ -46,6 +50,8 @@ export async function getTravelSuggestions(
     const weatherInput: WeatherAndAttireInput = {
       travelDestination: location,
       travelDays: duration,
+      startDate: dateRange.from.toISOString(),
+      endDate: dateRange.to.toISOString(),
     };
 
     const transportInput: OfferTransportationTipsInput = {

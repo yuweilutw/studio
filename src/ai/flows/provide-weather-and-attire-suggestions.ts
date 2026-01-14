@@ -14,6 +14,8 @@ import {z} from 'genkit';
 const WeatherAndAttireInputSchema = z.object({
   travelDestination: z.string().describe('The travel destination.'),
   travelDays: z.number().describe('The number of travel days.'),
+  startDate: z.string().describe('The start date of the trip in ISO format.'),
+  endDate: z.string().describe('The end date of the trip in ISO format.'),
 });
 export type WeatherAndAttireInput = z.infer<typeof WeatherAndAttireInputSchema>;
 
@@ -31,7 +33,7 @@ const prompt = ai.definePrompt({
   name: 'weatherAndAttirePrompt',
   input: {schema: WeatherAndAttireInputSchema},
   output: {schema: WeatherAndAttireOutputSchema},
-  prompt: `You are a travel expert. Provide a concise weather forecast and clothing suggestions for a trip to {{{travelDestination}}} lasting {{{travelDays}}} days.\n\nWeather Forecast:\nClothing Suggestions: `,
+  prompt: `You are a travel expert. Provide a concise weather forecast and clothing suggestions for a trip to {{{travelDestination}}} from {{{startDate}}} to {{{endDate}}}. The trip is {{{travelDays}}} days long.\n\nWeather Forecast:\nClothing Suggestions: `,
 });
 
 const provideWeatherAndAttireSuggestionsFlow = ai.defineFlow(

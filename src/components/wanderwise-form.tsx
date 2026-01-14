@@ -2,6 +2,8 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon, Loader2 } from 'lucide-react';
 import type { FormSchema } from '@/lib/types';
 import { formSchema } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -14,10 +16,12 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Slider } from '@/components/ui/slider';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2 } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { cn } from '@/lib/utils';
+import { zhTW } from 'date-fns/locale';
 
 const travelThemes = [
   { id: 'adventure', label: '探險' },
@@ -46,12 +50,9 @@ export function WanderWiseForm({ onSubmit, isLoading }: WanderWiseFormProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       location: '',
-      duration: 7,
       preferences: [],
     },
   });
-
-  const duration = form.watch('duration');
 
   return (
     <Form {...form}>
@@ -72,19 +73,50 @@ export function WanderWiseForm({ onSubmit, isLoading }: WanderWiseFormProps) {
         
         <FormField
           control={form.control}
-          name="duration"
+          name="dateRange"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>旅遊天數：{duration} 天</FormLabel>
-              <FormControl>
-                <Slider
-                  min={1}
-                  max={30}
-                  step={1}
-                  value={[field.value]}
-                  onValueChange={(value) => field.onChange(value[0])}
-                />
-              </FormControl>
+            <FormItem className="flex flex-col">
+              <FormLabel>出遊日期</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {field.value?.from ? (
+                        field.value.to ? (
+                          <>
+                            {format(field.value.from, "yyyy/MM/dd")} -{" "}
+                            {format(field.value.to, "yyyy/MM/dd")}
+                          </>
+                        ) : (
+                          format(field.value.from, "yyyy/MM/dd")
+                        )
+                      ) : (
+                        <span>選擇日期</span>
+                      )}
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    locale={zhTW}
+                    initialFocus
+                    mode="range"
+                    defaultMonth={field.value?.from}
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    numberOfMonths={2}
+                    disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -168,7 +200,7 @@ export function WanderWiseForm({ onSubmit, isLoading }: WanderWiseFormProps) {
                             checked={field.value?.includes(item.id)}
                             onCheckedChange={(checked) => {
                               return checked
-                                ? field.onChange([...field.value, item.id])
+                                ? field.onChange([...(field.value || []), item.id])
                                 : field.onChange(
                                     field.value?.filter(
                                       (value) => value !== item.id
